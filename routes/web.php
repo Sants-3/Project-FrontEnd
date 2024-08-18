@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CrearVueloController;
+use App\Http\Controllers\InformeVueloController;
+use App\Http\Controllers\MantenimientoController;
+use App\Http\Controllers\TripulacionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
