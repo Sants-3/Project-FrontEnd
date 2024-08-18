@@ -1,50 +1,16 @@
 <?php
 
-<<<<<<< HEAD
-use App\Http\Controllers\CrearReservaController;
 use App\Http\Controllers\CrearVueloController;
-use App\Http\Controllers\ItinerarioController;
-=======
-use App\Http\Controllers\CrearVueloController;
->>>>>>> 7b2635a2148fb6ab878f4eb4c50de2f66fa7d86a
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('login');
 });
 
-<<<<<<< HEAD
-//Rutas Vuelo
-=======
-
->>>>>>> 7b2635a2148fb6ab878f4eb4c50de2f66fa7d86a
 Route::get('/crear_vuelo', [
     CrearVueloController::class, 'index'
 ]);
 
-<<<<<<< HEAD
-Route::get('/estado_vuelo', [
-    CrearVueloController::class, 'obtenerEstadoVuelo'
-]);
-
-Route::get('/buscar_vuelo', [
-    CrearVueloController::class, 'obtenerVuelo'
-]);
-
-Route::post('/crear_vuelo/guardar', [
-    CrearVueloController::class, 'crearVuelo'
-])->name("vuelo.crear");
-
-//Rutas Reserva
-Route::get('/crear_reserva', [
-    CrearReservaController::class, 'index'
-]);
-
-//Rutas Itinerario
-Route::get('/itinerario', [
-    ItinerarioController::class, 'index'
-]);
-=======
 Route::get('/informes/vuelos', [
     InformeVueloController::class, 'index'
 ]);
@@ -77,7 +43,6 @@ Route::post('/crear_vuelo/guardar', [
 
 ])->name("vuelo.crear");
 
->>>>>>> 7b2635a2148fb6ab878f4eb4c50de2f66fa7d86a
 
 //Ruta Login
 // Route::get('/login', function(){
