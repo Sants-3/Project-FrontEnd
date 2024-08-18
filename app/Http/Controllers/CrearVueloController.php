@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vuelo;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
 
 class CrearVueloController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view("crear_vuelo");
     }
-    
-    public function crearVuelo(Request $request){
-        $idVuelo= $request->input("id");
+
+    public function crearVuelo(Request $request)
+    {
+        // $idVuelo = $request->input("id");
         $origen = $request->input("origen");
         $destino = $request->input("destino");
         $numeroVuelo = $request->input("numero_vuelo");
@@ -21,21 +25,49 @@ class CrearVueloController extends Controller
         $fechaSalida = $request->input("fecha_salida");
         $fechaRegreso = $request->input("fecha_regreso");
 
-        $vuelos=new Vuelo();
-        
-        $vuelos->idVuelo= $idVuelo;
-        $vuelos->origen=$origen;
-        $vuelos->destino=$destino;
-        $vuelos->numeroVuelo=$numeroVuelo;
-        $vuelos->horaSalida=$horaSalida;
-        $vuelos->horaLlegada=$horaLlegada;
-        $vuelos->fechaSalida=$fechaSalida;
-        $vuelos->fechaRegreso=$fechaRegreso;
+        //URL del endpoint de la API REST
+        $url = '';
 
-        $vuelos->save();
+        try {
+            $cliente = new Client([
+                'base_uri' => $url,
+                'timeout' => 10.0,
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Content-Type' => 'application/json'
+                ]
+            ]);
 
-        return redirect("crear_vuelo");
+            $data = [
+                'json' => [
+                    // 'id' => $idVuelo,
+                    'origen ' => $origen,
+                    'destino' => $destino,
+                    'numero_vuelo' => $numeroVuelo,
+                    'hora_salida' => $horaSalida,
+                    'hora_llegada' => $horaLlegada,
+                    'fecha_salida' => $fechaSalida,
+                    'fecha_regreso' => $fechaRegreso,
+                ]
+            ];
 
+            $response = $cliente->request('POST', $url, $data);
 
+            if ($response->getStatusCode() == 200) {
+                return view('lista_vuelos');
+            } else {
+                return response()->json(['error' => 'Error al consumir el API'], $response->getStatusCode());
+            }
+        } catch (RequestException $e) {
+            return response()->json(['error' => 'Error en la solicitud: ' . $e->getMessage()], 500);
+        }
+    }
+
+    public function obtenerEstadoVuelo(){
+        return view('estado_vuelo');
+    }
+
+    public function obtenerVuelo(){
+        return view('buscar_vuelo');
     }
 }
