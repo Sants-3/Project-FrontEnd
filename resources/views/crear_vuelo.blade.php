@@ -26,6 +26,7 @@
     <div class="div-formulario">
     <form class="form-vuelo" action="{{route("vuelo.crear")}}" method="post">
         @csrf
+<<<<<<< HEAD
         <!-- <div class="mb-3">
         <label for="" class="form-label">idVuelo: </label>
         <input type="text" class="form-control" name="id">
@@ -57,6 +58,19 @@
             <option value="8">Francia</option>
             <option value="7">Japon</option>
         </select>
+=======
+        <div class="mb-3">
+        <label for="" class="form-label">idVuelo: </label>
+        <input type="text" class="form-control" name="id">
+        </div>
+        <div class="mb-3">
+        <label for="" class="form-label">Origen: </label>
+        <input type="text" class="form-control" name="origen">
+        </div>
+       <div class="mb-3">
+       <label for="" class="form-label">Destino: </label>
+       <input type="text" class="form-control" name="destino" >
+>>>>>>> 7b2635a2148fb6ab878f4eb4c50de2f66fa7d86a
        </div>
       <div class="mb-3">
       <label for="" class="form-label">Numero De Vuelo: </label>
@@ -64,6 +78,7 @@
       </div>
        <div class="mb-3">
        <label for="" class="form-label">Hora De Salida: </label>
+<<<<<<< HEAD
        <select class="form-select" name="hora_salida" id="id_hora_salida">
        <option value="1">10:00</option>
        <option value="2">10:30</option>
@@ -88,6 +103,13 @@
        <option value="9">21:00</option>
        <option value="10">22:00</option>
        </select>
+=======
+       <input type="text" class="form-control" name="hora_salida">
+       </div>
+      <div class="mb-3">
+      <label for="" class="form-label">Hora De Llegada: </label>
+      <input type="text" class="form-control" name="hora_llegada">
+>>>>>>> 7b2635a2148fb6ab878f4eb4c50de2f66fa7d86a
       </div>
         <div class="mb-3">
         <label for="" class="form-label">Fecha De Salida: </label>
@@ -97,6 +119,7 @@
        <label for="" class="form-label">Fecha De Regreso: </label>
        <input type="text" class="form-control" name="fecha_regreso">
        </div>
+<<<<<<< HEAD
        <div class="mb-3">
       <label for="" class="form-label">Tipo de Avion: </label>
       <select class="form-select" name="tipo_avion" id="id_avion">
@@ -118,6 +141,8 @@
        </optgroup>
        </select>
       </div>
+=======
+>>>>>>> 7b2635a2148fb6ab878f4eb4c50de2f66fa7d86a
     <div style="display:flex; justify-content:center; width:100%">
     <button type="submit" class="btn btn-primary" >Crear Vuelo</button>
     </div>
