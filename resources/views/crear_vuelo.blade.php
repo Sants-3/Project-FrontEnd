@@ -26,17 +26,37 @@
     <div class="div-formulario">
     <form class="form-vuelo" action="{{route("vuelo.crear")}}" method="post">
         @csrf
-        <div class="mb-3">
+        <!-- <div class="mb-3">
         <label for="" class="form-label">idVuelo: </label>
         <input type="text" class="form-control" name="id">
-        </div>
+        </div> -->
         <div class="mb-3">
         <label for="" class="form-label">Origen: </label>
-        <input type="text" class="form-control" name="origen">
+        <select class="form-select" name="origen" id="id_origen">
+            <option value="1">Tegucigalpa</option>
+            <option value="2">San Pedro Sula</option>
+            <option value="3">La Ceiba</option>
+            <option value="4">Honduras</option>
+            <option value="5">Mexico</option>
+            <option value="6">Brasil</option>
+            <option value="7">Colombia</option>
+            <option value="8">Francia</option>
+            <option value="9">Japon</option>
+        </select>
         </div>
        <div class="mb-3">
        <label for="" class="form-label">Destino: </label>
-       <input type="text" class="form-control" name="destino" >
+       <select class="form-select" name="destino" id="id_destino">
+            <option value="1">Tegucigalpa</option>
+            <option value="2">San Pedro Sula</option>
+            <option value="3">La Ceiba</option>
+            <option value="4">Honduras</option>
+            <option value="5">Mexico</option>
+            <option value="6">Brasil</option>
+            <option value="7">Colombia</option>
+            <option value="8">Francia</option>
+            <option value="7">Japon</option>
+        </select>
        </div>
       <div class="mb-3">
       <label for="" class="form-label">Numero De Vuelo: </label>
@@ -44,11 +64,30 @@
       </div>
        <div class="mb-3">
        <label for="" class="form-label">Hora De Salida: </label>
-       <input type="text" class="form-control" name="hora_salida">
+       <select class="form-select" name="hora_salida" id="id_hora_salida">
+       <option value="1">10:00</option>
+       <option value="2">10:30</option>
+       <option value="3">11:00</option>
+       <option value="4">12:00</option>
+       <option value="5">13:00</option>
+       <option value="6">14:00</option>
+       <option value="7">15:00</option>
+       </select>
        </div>
       <div class="mb-3">
       <label for="" class="form-label">Hora De Llegada: </label>
-      <input type="text" class="form-control" name="hora_llegada">
+      <select class="form-select" name="hora_llegada" id="id_hora_salida">
+       <option value="1">12:00</option>
+       <option value="2">13:00</option>
+       <option value="3">14:00</option>
+       <option value="4">15:00</option>
+       <option value="5">16:00</option>
+       <option value="6">17:00</option>
+       <option value="7">18:00</option>
+       <option value="8">20:00</option>
+       <option value="9">21:00</option>
+       <option value="10">22:00</option>
+       </select>
       </div>
         <div class="mb-3">
         <label for="" class="form-label">Fecha De Salida: </label>
@@ -58,6 +97,27 @@
        <label for="" class="form-label">Fecha De Regreso: </label>
        <input type="text" class="form-control" name="fecha_regreso">
        </div>
+       <div class="mb-3">
+      <label for="" class="form-label">Tipo de Avion: </label>
+      <select class="form-select" name="tipo_avion" id="id_avion">
+       <optgroup label="Nacionales">
+       <option value="1">Bombardier CRJ</option>
+       <option value="2">Embraer E-Jets</option>  
+       </optgroup>
+       <optgroup label="Nacionales e Internacionales">
+       <option value="1">Airbus A320</option>
+       <option value="2">Boeing 737</option>  
+       </optgroup>
+       <optgroup label="Internacionales">
+       <option value="1">Boeing 777</option>
+       <option value="2">Airbus A350</option>  
+       </optgroup>
+       <optgroup label="Continentales">
+       <option value="1">Boeing 787 Dreamliner</option>
+       <option value="2">Airbus A380</option>  
+       </optgroup>
+       </select>
+      </div>
     <div style="display:flex; justify-content:center; width:100%">
     <button type="submit" class="btn btn-primary" >Crear Vuelo</button>
     </div>
