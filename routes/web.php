@@ -6,7 +6,7 @@ use App\Http\Controllers\ItinerarioController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 //Rutas Vuelo
@@ -35,6 +35,11 @@ Route::get('/crear_reserva', [
 Route::get('/itinerario', [
     ItinerarioController::class, 'index'
 ]);
+
+//Ruta Login
+// Route::get('/login', function(){
+//  return view('login');
+// });
 
 Route::middleware([
     'auth:sanctum',
