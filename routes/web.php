@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CrearReservaController;
 use App\Http\Controllers\CrearVueloController;
 use App\Http\Controllers\InformeVueloController;
 use App\Http\Controllers\MantenimientoController;
@@ -13,6 +14,10 @@ Route::get('/', function () {
 
 Route::get('/crear_vuelo', [
     CrearVueloController::class, 'index'
+]);
+
+Route::get('/crear_reserva', [
+    CrearReservaController::class, 'index'
 ]);
 
 Route::get('/informes/vuelos', [
