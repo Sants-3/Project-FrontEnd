@@ -17,6 +17,7 @@ class CrearVueloController extends Controller
     public function crearVuelo(Request $request)
     {
         // $idVuelo = $request->input("id");
+        $idVuelo= $request->input("id");
         $origen = $request->input("origen");
         $destino = $request->input("destino");
         $numeroVuelo = $request->input("numero_vuelo");

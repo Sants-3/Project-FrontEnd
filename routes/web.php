@@ -1,40 +1,52 @@
 <?php
 
-use App\Http\Controllers\CrearReservaController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CrearVueloController;
-use App\Http\Controllers\ItinerarioController;
+use App\Http\Controllers\InformeVueloController;
+use App\Http\Controllers\MantenimientoController;
+use App\Http\Controllers\TripulacionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('login');
 });
 
-//Rutas Vuelo
 Route::get('/crear_vuelo', [
     CrearVueloController::class, 'index'
 ]);
 
-Route::get('/estado_vuelo', [
-    CrearVueloController::class, 'obtenerEstadoVuelo'
+Route::get('/informes/vuelos', [
+    InformeVueloController::class, 'index'
 ]);
 
-Route::get('/buscar_vuelo', [
-    CrearVueloController::class, 'obtenerVuelo'
-]);
+Route::get('/aviones/{idAvion}/mantenimiento/create', [
+    MantenimientoController::class, 'create'])->name('mantenimiento.create');
+Route::post('/aviones/{idAvion}/mantenimiento', [
+
+    MantenimientoController::class, 'store'])->name('mantenimiento.store');
+Route::get('/aviones/{idAvion}/mantenimiento', [
+    MantenimientoController::class, 'index'])->name('mantenimiento.index');
+
+Route::get('/clientes', [
+    ClienteController::class, 'index'])->name('clientes.index');
+
+Route::get('/clientes/{id}', [
+    ClienteController::class, 'show'])->name('clientes.show');
+
+Route::get('/informes/vuelos', [
+    InformeVueloController::class, 'index']);
+
+Route::get('/vuelos/{idVuelo}/assign', [
+    TripulacionController::class, 'assignPiloto'])->name('tripulacion.assign');
+
+Route::post('/vuelos/{idVuelo}/assign', [
+    TripulacionController::class, 'store'])->name('tripulacion.store');
 
 Route::post('/crear_vuelo/guardar', [
     CrearVueloController::class, 'crearVuelo'
+
 ])->name("vuelo.crear");
 
-//Rutas Reserva
-Route::get('/crear_reserva', [
-    CrearReservaController::class, 'index'
-]);
-
-//Rutas Itinerario
-Route::get('/itinerario', [
-    ItinerarioController::class, 'index'
-]);
 
 //Ruta Login
 // Route::get('/login', function(){
