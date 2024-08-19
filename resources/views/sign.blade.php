@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css2?family=Matemasie&display=swap" rel="stylesheet">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Login Aerolinea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Matemasie&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Registro Aerolinea</title>
     <style>
         * {
             margin: 0;
@@ -26,7 +26,7 @@
         .texto {
             /* color: white; */
             /* text-align: center; */
-            margin: 105px 0;
+            margin: 40px 0;
             /* font-size: 28px; */
             font-family: "Matemasie", sans-serif;
             font-weight: 400;
@@ -36,8 +36,8 @@
         }
 
         .div-formulario {
-            padding-top: 35px;
-            padding-bottom: 70px;
+            padding-top: 10px;
+            padding-bottom: 17px;
             border: black 1.5px solid;
             width: 420px;
             background-color: whitesmoke;
@@ -65,29 +65,44 @@
 <body>
     <div class="texto">
         <div class="div-formulario">
-            <h3>Welcome back!!!</h3>
-            <h1>Log In</h1>
-            <form action="{{route('vuelos.lista')}}">
+            <h3>You Are Welcome!!!</h3>
+            <h1>SIGN UP</h1>
+            <form action="{{route('cliente.registro.guardar')}}" method="post">
+                @csrf
                 <div class="mb-3">
-                    <label class="form-label" for="">Email: </label>
-                    <input class="form-control" type="email">
+                    <label class="form-label" for="nombre">Nombre: </label>
+                    <input class="form-control" type="text" name="nombre">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="apellido">Apellido: </label>
+                    <input class="form-control" type="text" name="apellido">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="correo">Email: </label>
+                    <input class="form-control" type="email" name="correo">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="password">Password: </label>
+                    <input class="form-control" type="password" name="password">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="dni">DNI: </label>
+                    <input class="form-control" type="text" name="dni" placeholder="Ejemplo: 0105-1977-22222">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="telefono">Telefono: </label>
+                    <input class="form-control" type="text" name="telefono" placeholder="Ingrese asi: XXXX-XXXX">
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">SIGN UP-></button>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="">Password: </label>
-                    <input class="form-control" type="text">
-                </div>
-
-                <div class="mb-3">
-                    <button class="btn btn-primary" type="submit">LOGIN -></button>
-                </div>
-
-                Aun no tienes una cuenta con nosotros? <a href="{{route('cliente.registro')}}">Sing Up</a>
+                Ya tienes una cuenta con nosotros? <a href="{{route('cliente.login')}}">Login</a>
             </form>
         </div>
         <box-icon style="font-size: 365px; display: flex; align-items: center;" type='solid' name='plane-alt'>
-    <i style="font-size: 365px;" class='bx bxs-plane-alt'></i>
-    </box-icon>
+            <i style="font-size: 365px;" class='bx bxs-plane-alt'></i>
+        </box-icon>
     </div>
 </body>
 

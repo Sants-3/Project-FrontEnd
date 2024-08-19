@@ -24,7 +24,7 @@
     <h1>Vista Para Crear Reservas</h1>
     
     <div class="div-formulario">
-    <form class="form-vuelo" action="{{route("vuelo.crear")}}" method="post">
+    <form class="form-vuelo" action="{{route("reserva.crear")}}" method="post">
         @csrf
         <!-- <div class="mb-3">
         <label for="" class="form-label">idVuelo: </label>
@@ -40,7 +40,11 @@
        </div>
        <div class="mb-3">
        <label for="" class="form-label">Pasajero: </label>
-       <input type="text" class="form-control" name="pasajero">
+       <select class="form-select" name="pasajero" id="id_pasajero">
+        <option value="1">PASAJERO 1</option>
+        <option value="2">PASAJERO 2</option>
+        <option value="3">PASAJERO 3</option>
+       </select>
        </div>
     <div style="display:flex; justify-content:center; width:100%">
     <button type="submit" class="btn btn-primary" >Crear Reserva</button>

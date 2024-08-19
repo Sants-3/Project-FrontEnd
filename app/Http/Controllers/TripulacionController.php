@@ -2,28 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class TripulacionController extends Controller
 {
-    public function assignPiloto($idVuelo)
-    {
-        $vuelo = Vuelo::findOrFail($idVuelo);
-        $pilotos = Piloto::all();
-        return view('tripulacion.assign', compact('vuelo', 'pilotos'));
+    public function creartripulacion(){
+        return view('crearTripulacion');
     }
 
-    public function store(Request $request, $idVuelo)
-    {
-        $request->validate([
-            'piloto_id' => 'required|exists:pilotos,id',
-        ]);
+    public function guardarTripulacion(Request $request){
 
-        $tripulacion = Tripulacion::updateOrCreate(
-            ['vuelo_id' => $idVuelo],
-            ['piloto_id' => $request->piloto_id]
-        );
+        $datosTripulacion = [
+            'nombre' => $request->input("nombre"),
+            'rol' => $request->input("rol")
+        ];
 
-        return redirect()->route('vuelos.index')->with('success', 'Piloto asignado correctamente.');
+        $client = new Client();
+
+        try {
+            // Hacer una solicitud POST
+            $response = $client->request('POST', 'http://localhost:8093/api/tripulacion/crear', [
+                'json' => $datosTripulacion// Enviar los datos como JSON
+            ]);
+    
+            // Obtener la respuesta del servidor
+            $responseBody = $response->getBody()->getContents();
+    
+            // Puedes hacer algo con la respuesta si es necesario
+            echo 'Respuesta de la API: ' . $responseBody;
+    
+        }
+        catch (\GuzzleHttp\Exception\RequestException $e) {
+            // Manejar errores en la solicitud
+            echo 'Error en la solicitud: ' . $e->getMessage();
+        }
+
+       
+        return redirect("/mostrar_aviones");
+        
     }
+
+    
 }
