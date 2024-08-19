@@ -8,7 +8,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Matemasie&display=swap" rel="stylesheet">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Login Aerolinea</title>
+    <title>Reservas</title>
     <style>
         * {
             margin: 0;
@@ -39,11 +39,15 @@
             padding-top: 35px;
             padding-bottom: 70px;
             border: black 1.5px solid;
-            width: 420px;
+            width: 670px;
             background-color: whitesmoke;
             border-radius: 20px;
             padding-left: 20px;
             padding-right: 20px;
+        }
+
+        .table-striped {
+            text-align: center;
         }
 
         @keyframes fanimado {
@@ -65,25 +69,28 @@
 <body>
     <div class="texto">
         <div class="div-formulario">
-            <h3>Welcome back!!!</h3>
-            <h1>Log In</h1>
-            <form action="{{route('vuelos.lista')}}">
-                <div class="mb-3">
-                    <label class="form-label" for="">Email: </label>
-                    <input class="form-control" type="email">
-                </div>
+        <h2>Lista de Itinerario</h2>
 
-                <div class="mb-3">
-                    <label class="form-label" for="">Password: </label>
-                    <input class="form-control" type="text">
-                </div>
-
-                <div class="mb-3">
-                    <button class="btn btn-primary" type="submit">LOGIN -></button>
-                </div>
-
-                Aun no tienes una cuenta con nosotros? <a href="{{route('cliente.registro')}}">Sing Up</a>
-            </form>
+        <table class="table table-dark table-striped">
+            <thead>
+            <tr>
+                <td>Numero de Vuelo</td>
+                <td>Estado</td>
+                <td>Salida</td>
+                <td>Llegada</td>
+            </tr>
+            </thead>
+        @foreach ($data as $lista_vuelos)
+        <tbody>
+        <tr>
+            <td>{{$lista_vuelos['numeroVuelo']}}</td>
+            <td>{{$lista_vuelos['estadoVuelo']}}</td>
+            <td>{{ \Carbon\Carbon::parse($lista_vuelos['horaSalida'])->format('H:i') }}</td>
+            <td>{{ \Carbon\Carbon::parse($lista_vuelos['horaLlegada'])->format('H:i') }}</td>
+        </tr>
+        </tbody>
+@endforeach
+</table>
         </div>
         <box-icon style="font-size: 365px; display: flex; align-items: center;" type='solid' name='plane-alt'>
     <i style="font-size: 365px;" class='bx bxs-plane-alt'></i>
